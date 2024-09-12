@@ -163,18 +163,19 @@ function deleteDuplicates(archivo1, archivo2) {
       "--usr-agent=" + usrAgent,
       "--no-sandbox",
       "--disable-setuid-sandbox",
-      // "--proxy-server=" + proxyUrl,
+      "--proxy-server=" + proxyUrl,
       "--ignore-certificate-errors",
     ],
     headless: false,
-    executablePath:
-      "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+    // YOUR BROWSER PATH
+    // executablePath:
+    //   "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
   });
   const page = await browser.newPage();
-  // await page.authenticate({
-  //   username: process.env.PROXY_USERNAME,
-  //   password: process.env.PROXY_PASSWORD,
-  // });
+  await page.authenticate({
+    username: process.env.PROXY_USERNAME,
+    password: process.env.PROXY_PASSWORD,
+  });
   page.setDefaultNavigationTimeout(0);
 
   // Manejo de advertencias SSL
