@@ -5,7 +5,6 @@ SMTP Extractor v1.0: Quick Guide
 Make sure you have Node.js installed.
 Navigate to the project directory.
 Run npm install to install the required packages.
-Run script using <node app>
 
 2. Select a Dork:
 The software presents predefined search queries (potential dorks) to find vulnerable servers containing sensitive SMTP information.
