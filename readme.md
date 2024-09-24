@@ -1,6 +1,6 @@
-# SMTP Extractor v1.0: Guía Rápida
+# SMTP Hunter v1.0: Guía Rápida
 
-**SMTP Extractor v1.0** es una herramienta diseñada para automatizar la búsqueda de servidores SMTP vulnerables y la extracción de credenciales sensibles. A continuación, te presentamos una guía paso a paso para usar el software correctamente.
+**SMTP Hunter v1.0** es una herramienta diseñada para automatizar la búsqueda de servidores SMTP vulnerables y la extracción de credenciales sensibles. A continuación, te presentamos una guía paso a paso para usar el software correctamente.
 
 ## 1. Instalación de Dependencias
 - Asegúrate de tener **Node.js** instalado.
