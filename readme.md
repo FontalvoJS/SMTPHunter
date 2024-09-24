@@ -7,10 +7,11 @@
 - Navega al directorio del proyecto.
 - Ejecuta el comando `npm install` para instalar los paquetes necesarios.
 
-## 2. Selección de un Dork
+## 2. Selección de un Dork y el navegador a utilizar
 El software te ofrece **consultas de búsqueda predefinidas** (conocidas como dorks) que permiten encontrar servidores vulnerables con información SMTP sensible.
 
 - Puedes elegir entre las opciones proporcionadas o **ingresar un dork personalizado** según tus necesidades.
+- Puedes elegir tu navegador preferido para llevar a cabo la busqueda
 
 ## 3. Bypass del servicio reCaptcha
 La herramienta está equipada con un módulo que **automatiza las búsquedas en Google** y gestiona los desafíos de reCaptcha, permitiendo una recopilación fluida de información.
