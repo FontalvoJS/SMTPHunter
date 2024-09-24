@@ -157,10 +157,7 @@ function createFiles() {
     process.exit(1);
   }
   const executablePath = readlineSync.question(
-    `${colors.input}Ingresa la ruta del navegador (por ejemplo, C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe): ${colors.reset}`
-  );
-  console.log(
-    `=================\n${colors.reset}Esperando servicio recaptcha...`
+    `${colors.input}Ingresa la ruta del navegador (por ejemplo, C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe) o deja en blanco para seleccionar el predeterminado: ${colors.reset}`
   );
   const proxyUrl = process.env.PROXY_HOST_PORT;
   const browser = await puppeteer.launch({
