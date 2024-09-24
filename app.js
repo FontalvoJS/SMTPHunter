@@ -83,8 +83,22 @@ function deleteDuplicates(archivo1, archivo2) {
   fs.writeFileSync(archivo1, lineasUnicas1.join("\n"));
   fs.writeFileSync(archivo2, lineasUnicas2.join("\n"));
 }
+function createFiles() {
+  const filesToCreate = [
+    "smtp_extracted.txt",
+    "smtp_checked.txt",
+  ];
+
+  filesToCreate.forEach((file) => {
+    if (!fs.existsSync(file)) {
+      fs.writeFileSync(file, "");
+    }
+  });
+}
+
 (async () => {
   console.clear();
+  createFiles();
   console.log(`
     ███████╗███╗   ███╗████████╗██████╗     ██╗  ██╗██╗   ██╗███╗   ██╗████████╗███████╗██████╗ 
     ██╔════╝████╗ ████║╚══██╔══╝██╔══██╗    ██║  ██║██║   ██║████╗  ██║╚══██╔══╝██╔════╝██╔══██╗
@@ -337,7 +351,22 @@ function deleteDuplicates(archivo1, archivo2) {
         SMTP_PORT: "port",
         SMTP_USER: "user",
         SMTP_PASS: "pass",
-        // Agrega más mapeos según sea necesario
+        EMAIL_HOST: "host",
+        EMAIL_PORT: "port",
+        EMAIL_USERNAME: "user",
+        EMAIL_PASSWORD: "pass",
+        EMAIL_ENCRYPTION: "secure",
+        MAILER_HOST: "host",
+        MAILER_PORT: "port",
+        MAILER_USERNAME: "user",
+        MAILER_PASSWORD: "pass",
+        MAILER_ENCRYPTION: "secure",
+        SENDMAIL_HOST: "host",
+        SENDMAIL_PORT: "port",
+        SENDMAIL_USERNAME: "user",
+        SENDMAIL_PASSWORD: "pass",
+        SENDMAIL_ENCRYPTION: "secure",
+        // AGREGA MAS SEGUN SEA NECESARIo
       };
       responses.forEach((response) => {
         if (response?.data) {
