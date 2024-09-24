@@ -20,17 +20,7 @@ const colors = {
   input: "\x1b[33m",
   error: "\x1b[31m",
 };
-// const dorkDescriptions = [
-//   "Searches for .env files with sensitive terms like MAIL_HOST or DB_PASSWORD",
-//   "Focuses on searching for .env or sensitive configuration files, avoiding public repositories",
-//   "Targets phpinfo or config.php files with keywords related to passwords and SMTP credentials",
-//   "Searches for .env files containing MAIL_HOST variables or credentials",
-//   "Specific dork for wp-config.php files, often containing database credentials",
-//   "Dork to locate any indexable file containing SMTP or mail information",
-//   "Dork focused on configuration files that may contain SMTP credentials",
-//   "Searches for environment, config, or credentials files in public indexes",
-//   "Specific search for MAIL and SMTP variables within .env or config files",
-// ];
+
 const dorkDescriptions = [
   "Busca archivos .env con términos sensibles como MAIL_HOST o DB_PASSWORD",
   "Se enfoca en buscar archivos .env o de configuración sensible, evitando repositorios públicos",
@@ -102,7 +92,6 @@ function deleteDuplicates(archivo1, archivo2) {
     `====================================\n${colors.reset} Por favor selecciona una opción:\n`
   );
 
-  // Mostrar dorks predefinidos con opción para personalizar
   dorkDescriptions.forEach((description, index) => {
     console.log(
       `${colors.reset}(${index + 1})${colors.option} ${description}${
@@ -157,7 +146,7 @@ function deleteDuplicates(archivo1, archivo2) {
   }
 
   console.log(`=================\n${colors.reset}Verifying reCaptcha...`);
-  // const proxyUrl = process.env.PROXY_HOST_PORT;
+  const proxyUrl = process.env.PROXY_HOST_PORT;
   const browser = await puppeteer.launch({
     args: [
       "--usr-agent=" + usrAgent,
@@ -167,7 +156,7 @@ function deleteDuplicates(archivo1, archivo2) {
       "--ignore-certificate-errors",
     ],
     headless: false,
-    // YOUR BROWSER PATH
+    // RUTA DEL NAVEGADOR
     // executablePath:
     //   "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
   });
@@ -178,14 +167,12 @@ function deleteDuplicates(archivo1, archivo2) {
   });
   page.setDefaultNavigationTimeout(0);
 
-  // Manejo de advertencias SSL
   page.on("dialog", async (dialog) => {
     if (dialog.type() === "beforeunload") {
       await dialog.accept();
     }
   });
 
-  // Navegar a Google y realizar la búsqueda
   await page.goto("https://www.google.com");
   const googleQuestion = await page.$('button[id="L2AGLb"]');
   if (googleQuestion) {
@@ -260,11 +247,10 @@ function deleteDuplicates(archivo1, archivo2) {
     return allUrls;
   }
 
-  // Función que hace las solicitudes con reintentos
   const axiosRetry = async (url, retries = 2, timeout = 10000) => {
     try {
       const response = await axios.get(url, {
-        timeout: timeout, // Timeout extendido
+        timeout: timeout, 
         headers: { "User-Agent": usrAgent },
       });
       return response;
@@ -273,7 +259,7 @@ function deleteDuplicates(archivo1, archivo2) {
         return await axiosRetry(url, retries - 1, timeout);
       } else {
         console.log(`❌ Error with ${url}: ${error.message}`);
-        return null; // Retorna null si falla tras los reintentos
+        return null; 
       }
     }
   };
