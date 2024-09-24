@@ -6,7 +6,6 @@
 - Asegúrate de tener **Node.js** instalado.
 - Navega al directorio del proyecto.
 - Ejecuta el comando `npm install` para instalar los paquetes necesarios.
-- Ingresa la ruta de tu navegador en la linea 160 de app.js 
 
 ## 2. Selección de un Dork
 El software te ofrece **consultas de búsqueda predefinidas** (conocidas como dorks) que permiten encontrar servidores vulnerables con información SMTP sensible.
