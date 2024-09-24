@@ -95,10 +95,10 @@ function deleteDuplicates(archivo1, archivo2) {
     Solo para propositos educativos | By: FontalvoJS
     `);
 
-
   dorkDescriptions.forEach((description, index) => {
     console.log(
-      `${colors.reset}(${index + 1})${colors.option} ${description}${colors.reset
+      `${colors.reset}(${index + 1})${colors.option} ${description}${
+        colors.reset
       }`
     );
   });
@@ -139,13 +139,15 @@ function deleteDuplicates(archivo1, archivo2) {
       `${colors.input} Ingresa tu dork: ${colors.reset}`
     );
   } else {
-    console.log(
-      `${colors.error} Opcion incorrecta.${colors.reset}`
-    );
+    console.log(`${colors.error} Opcion incorrecta.${colors.reset}`);
     process.exit(1);
   }
-
-  console.log(`=================\n${colors.reset}Esperando servicio recaptcha...`);
+  const executablePath = readlineSync.question(
+    `${colors.input}Ingresa la ruta del navegador (por ejemplo, C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe): ${colors.reset}`
+  );
+  console.log(
+    `=================\n${colors.reset}Esperando servicio recaptcha...`
+  );
   const proxyUrl = process.env.PROXY_HOST_PORT;
   const browser = await puppeteer.launch({
     args: [
@@ -157,8 +159,7 @@ function deleteDuplicates(archivo1, archivo2) {
     ],
     headless: false,
     // RUTA DEL NAVEGADOR
-    // executablePath:
-    //   "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+    executablePath,
   });
   const page = await browser.newPage();
   await page.authenticate({
@@ -172,7 +173,6 @@ function deleteDuplicates(archivo1, archivo2) {
       await dialog.accept();
     }
   });
-
   await page.goto("https://www.google.com");
   const googleQuestion = await page.$('button[id="L2AGLb"]');
   if (googleQuestion) {
@@ -186,9 +186,7 @@ function deleteDuplicates(archivo1, archivo2) {
   await new Promise((resolve) => setTimeout(resolve, 2000));
   await solveCaptcha(page);
   console.log(`=================`);
-  console.log(
-    `${colors.reset}Obteniendo todas las URLS encontradas...`
-  );
+  console.log(`${colors.reset}Obteniendo todas las URLS encontradas...`);
   console.log(`=================`);
 
   // Función para recolectar todas las URLs de los resultados de búsqueda
@@ -220,9 +218,7 @@ function deleteDuplicates(archivo1, archivo2) {
       });
 
       if (nextButtonExists) {
-        console.log(
-          `🔄 Analizando servidores vulnerables...`
-        );
+        console.log(`🔄 Analizando servidores vulnerables...`);
         try {
           await Promise.all([
             page.click("a#pnnext"),

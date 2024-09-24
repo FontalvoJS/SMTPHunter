@@ -15,7 +15,7 @@ const logger = winston.createLogger({
 });
 
 const smtpCheckedFilePath = "smtp_checked.txt";
-const testEmail = "lapeste2023@outlook.com";
+const testEmail = "tuemail@outlook.com";
 const concurrentLimit = 20;
 const batchSize = 5;
 
