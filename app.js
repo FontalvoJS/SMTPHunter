@@ -85,17 +85,20 @@ function deleteDuplicates(archivo1, archivo2) {
 }
 (async () => {
   console.clear();
-  console.log(
-    `====================================\n${colors.reset} SMTP Extractor | v1.0 | By: AntraX`
-  );
-  console.log(
-    `====================================\n${colors.reset} Por favor selecciona una opción:\n`
-  );
+  console.log(`
+    ███████╗███╗   ███╗████████╗██████╗     ██╗  ██╗██╗   ██╗███╗   ██╗████████╗███████╗██████╗ 
+    ██╔════╝████╗ ████║╚══██╔══╝██╔══██╗    ██║  ██║██║   ██║████╗  ██║╚══██╔══╝██╔════╝██╔══██╗
+    ███████╗██╔████╔██║   ██║   ██████╔╝    ███████║██║   ██║██╔██╗ ██║   ██║   █████╗  ██████╔╝
+    ╚════██║██║╚██╔╝██║   ██║   ██╔═══╝     ██╔══██║██║   ██║██║╚██╗██║   ██║   ██╔══╝  ██╔══██╗
+    ███████║██║ ╚═╝ ██║   ██║   ██║         ██║  ██║╚██████╔╝██║ ╚████║   ██║   ███████╗██║  ██║
+    ╚══════╝╚═╝     ╚═╝   ╚═╝   ╚═╝         ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝   ╚═╝   ╚══════╝╚═╝  ╚═╝
+    Solo para propositos educativos | By: FontalvoJS
+    `);
+
 
   dorkDescriptions.forEach((description, index) => {
     console.log(
-      `${colors.reset}(${index + 1})${colors.option} ${description}${
-        colors.reset
+      `${colors.reset}(${index + 1})${colors.option} ${description}${colors.reset
       }`
     );
   });
@@ -121,10 +124,7 @@ function deleteDuplicates(archivo1, archivo2) {
   } else if (userChoice === 17) {
     console.clear();
     console.log(
-      `${colors.title}====================================\n${colors.reset} SMTP Extractor | Custom Dork`
-    );
-    console.log(
-      `${colors.title}====================================\n${colors.reset} Please copy one of the following dorks and modify it as needed:\n`
+      `${colors.title}====================================\n${colors.reset} Selecciona cualquier dork para que puedas personalizarlo:\n`
     );
 
     dorks.forEach((dork, index) => {
@@ -132,20 +132,20 @@ function deleteDuplicates(archivo1, archivo2) {
     });
 
     console.log(
-      `${colors.input}\nAfter copying, press Enter to continue with your custom dork${colors.reset}`
+      `${colors.input}\n Despues de haberlo copiado, ingresalo para continuar con la busqueda personalizada ${colors.reset}`
     );
     readlineSync.question();
     selectedDork = readlineSync.question(
-      `${colors.input}Enter your custom dork here: ${colors.reset}`
+      `${colors.input} Ingresa tu dork: ${colors.reset}`
     );
   } else {
     console.log(
-      `${colors.error}Invalid option selected. Exiting...${colors.reset}`
+      `${colors.error} Opcion incorrecta.${colors.reset}`
     );
     process.exit(1);
   }
 
-  console.log(`=================\n${colors.reset}Verifying reCaptcha...`);
+  console.log(`=================\n${colors.reset}Esperando servicio recaptcha...`);
   const proxyUrl = process.env.PROXY_HOST_PORT;
   const browser = await puppeteer.launch({
     args: [
@@ -187,7 +187,7 @@ function deleteDuplicates(archivo1, archivo2) {
   await solveCaptcha(page);
   console.log(`=================`);
   console.log(
-    `${colors.reset}Getting all vuln servers, this may take a moment...`
+    `${colors.reset}Obteniendo todas las URLS encontradas...`
   );
   console.log(`=================`);
 
@@ -221,7 +221,7 @@ function deleteDuplicates(archivo1, archivo2) {
 
       if (nextButtonExists) {
         console.log(
-          `🔄 Analyzing vulnerable servers, please wait while it finishes...`
+          `🔄 Analizando servidores vulnerables...`
         );
         try {
           await Promise.all([
@@ -250,7 +250,7 @@ function deleteDuplicates(archivo1, archivo2) {
   const axiosRetry = async (url, retries = 2, timeout = 10000) => {
     try {
       const response = await axios.get(url, {
-        timeout: timeout, 
+        timeout: timeout,
         headers: { "User-Agent": usrAgent },
       });
       return response;
@@ -259,7 +259,7 @@ function deleteDuplicates(archivo1, archivo2) {
         return await axiosRetry(url, retries - 1, timeout);
       } else {
         console.log(`❌ Error with ${url}: ${error.message}`);
-        return null; 
+        return null;
       }
     }
   };

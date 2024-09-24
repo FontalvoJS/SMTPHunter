@@ -69,8 +69,7 @@ async function solveCaptcha(page, oneTime = false) {
             return iframe;
           }
         } catch (err) {
-          console.log("=================");
-          console.warn(`Verifying reCaptcha...`);
+          console.log(`Esperando servicio recaptcha...`);
         }
       }
       return 404;
