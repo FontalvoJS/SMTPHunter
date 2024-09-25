@@ -40,12 +40,12 @@ Una vez que se procesan todas las URLs, el software guarda las credenciales SMTP
 
 Para que el extractor funcione correctamente, el software está **configurado por defecto** para usar un proxy, **Assembly AI** y una cuenta de **Cloudinary**. Deberás configurar un archivo `.env` con las siguientes variables:
 
-# PROXY_USERNAME=tu_usuario_proxy  
-## PROXY_PASSWORD=tu_contraseña_proxy  
-## PROXY_HOST_PORT=tu_host_proxy:puerto  
+PROXY_USERNAME=tu_usuario_proxy  
+PROXY_PASSWORD=tu_contraseña_proxy  
+PROXY_HOST_PORT=tu_host_proxy:puerto  
 
-## CLOUD_NAME=tu_nombre_cloudinary  
-## CLOUD_KEY=tu_api_key_cloudinary    
-## CLOUD_SECRET=tu_api_secret_cloudinary  
+CLOUD_NAME=tu_nombre_cloudinary  
+CLOUD_KEY=tu_api_key_cloudinary    
+CLOUD_SECRET=tu_api_secret_cloudinary  
 
-## ASSEMBLYAI_API_KEY=tu_api_key_assemblyai  
+ASSEMBLYAI_API_KEY=tu_api_key_assemblyai  
