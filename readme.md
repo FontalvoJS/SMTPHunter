@@ -7,7 +7,7 @@
 
 Una herramienta diseñada para automatizar la búsqueda de servidores SMTP vulnerables y la extracción de credenciales sensibles. A continuación, te presentamos una guía paso a paso para usar el software correctamente.
 
-## POR EL MOMENTO SOLO FUNCIONA USANDO INGLÉS COMO IDIOMA PRINCIPAL EN EL S.O
+POR EL MOMENTO SOLO FUNCIONA USANDO INGLÉS COMO IDIOMA PRINCIPAL EN EL S.O
 
 ## 1. Instalación de Dependencias
 - Asegúrate de tener **Node.js** instalado.
