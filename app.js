@@ -159,13 +159,13 @@ function createFiles() {
   const executablePath = readlineSync.question(
     `${colors.input}Ingresa la ruta del navegador (por ejemplo, C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe) o deja en blanco para seleccionar el predeterminado: ${colors.reset}`
   );
-  const proxyUrl = process.env.PROXY_HOST_PORT;
+  // const proxyUrl = process.env.PROXY_HOST_PORT;
   const browser = await puppeteer.launch({
     args: [
       "--usr-agent=" + usrAgent,
       "--no-sandbox",
       "--disable-setuid-sandbox",
-      "--proxy-server=" + proxyUrl,
+      // "--proxy-server=" + proxyUrl,
       "--ignore-certificate-errors",
     ],
     headless: false,
@@ -173,10 +173,10 @@ function createFiles() {
     executablePath,
   });
   const page = await browser.newPage();
-  await page.authenticate({
-    username: process.env.PROXY_USERNAME,
-    password: process.env.PROXY_PASSWORD,
-  });
+  // await page.authenticate({
+  //   username: process.env.PROXY_USERNAME,
+  //   password: process.env.PROXY_PASSWORD,
+  // });
   page.setDefaultNavigationTimeout(0);
 
   page.on("dialog", async (dialog) => {

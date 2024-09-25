@@ -93,8 +93,8 @@ async function solveCaptcha(page, oneTime = false) {
     }
 
     const challengeIframeSelector =
-      'iframe[title="recaptcha challenge expires in two minutes"]';
-    
+      'iframe[src*="https://www.google.com/recaptcha/api2/bframe"]';
+
     const secondIframe = await getValidFrame(challengeIframeSelector, oneTime);
 
     await secondIframe.waitForSelector("#recaptcha-audio-button");
