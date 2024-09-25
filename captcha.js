@@ -93,7 +93,8 @@ async function solveCaptcha(page, oneTime = false) {
     }
 
     const challengeIframeSelector =
-      'iframe[title="el desafío de recaptcha caduca dentro de dos minutos"]';
+      'iframe[title="recaptcha challenge expires in two minutes"]';
+    
     const secondIframe = await getValidFrame(challengeIframeSelector, oneTime);
 
     await secondIframe.waitForSelector("#recaptcha-audio-button");
